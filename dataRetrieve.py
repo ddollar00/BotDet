@@ -28,6 +28,7 @@ for i in user:
    try:
       userw=api.get_user(screen_name=i)
    except:
+      print("This user is Suspended!")
       continue
    ID=userw.id_str
    screenname=userw.screen_name
