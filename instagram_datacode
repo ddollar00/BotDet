@@ -1,0 +1,17 @@
+import instaloader
+import pandas as pd
+# Creating an instance of the Instaloader class
+bot = instaloader.Instaloader()
+username = input("username: ")
+# Loading a profile from an Instagram handle
+with open("Instagram.txt", "a")as f:
+    profile = instaloader.Profile.from_username(bot.context, username)
+    print("Username: ", profile.username, file =f)
+    print("User ID: ", profile.userid,file =f )
+    print("Number of Posts: ", profile.mediacount,file =f)
+    print("Followers Count: ", profile.followers,file =f)
+    print("Following Count: ", profile.followees,file =f)
+    print("Bio: ", profile.biography,file =f)
+    print("External URL: ", profile.external_url,file =f)
+    print("Verified: ",profile.is_verified, file = f)
+    print("Profile Pic ",profile.get_profile_pic_url(), file = f)
