@@ -4,10 +4,10 @@ import pandas as pd
 bot = instaloader.Instaloader()
 
 users=["mk.raven", "selfmade_kp", "_24simba"]
-username = users
+#username = users
 # Loading a profile from an Instagram handle
 with open("Instagram.txt", "a")as f:
-    for username in users:
+    for i in users:
         profile = instaloader.Profile.from_username(bot.context, i)
         print("Username: ", profile.username, file =f)
         print("User ID: ", profile.userid,file =f )
