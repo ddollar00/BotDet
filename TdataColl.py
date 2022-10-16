@@ -66,5 +66,5 @@ for i in user:
       # 'verified','statuses_count','status','name','bot'])
         writer.writerow([ID,screenname,desc,url,followers_count,friends_count,listed_count,verified,statuses_count,status,name,bot])
  
-print("Done, all profile are scraped")
+print("Done, all profiles are scraped")
 
