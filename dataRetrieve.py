@@ -59,5 +59,5 @@ with open('test6.csv',mode='w',encoding='utf-8') as filee:
        writer.writerow([ID,screenname,desc,url,followers_count,friends_count,listed_count,verified,statuses_count,status,name])
  
 print("Done, all profile data collected")
-os.system('python3 TBotDetection.py')
+#os.system('python3 TBotDetection.py')
 

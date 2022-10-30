@@ -22,7 +22,7 @@ auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
 # user tweets
-print("enter user:")
+
 user =  []
 for i in user:
    try:
