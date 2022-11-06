@@ -54,9 +54,9 @@ name=userw.name
 with open('test6.csv',mode='w',encoding='utf-8') as filee:
      
        writer=csv.writer(filee,delimiter=',',quoting=csv.QUOTE_MINIMAL)
-       writer.writerow(['id','screen_name','description','url','followers_count','friends_count','listed_count',
+       writer.writerow(['screen_name','description','url','followers_count','friends_count',
        'verified','statuses_count','status','name'])
-       writer.writerow([ID,screenname,desc,url,followers_count,friends_count,listed_count,verified,statuses_count,status,name])
+       writer.writerow([screenname,desc,url,followers_count,friends_count,verified,statuses_count,status,name])
  
 print("Done, all profile data collected")
 #os.system('python3 TBotDetection.py')

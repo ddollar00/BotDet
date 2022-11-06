@@ -23,12 +23,12 @@ api = tweepy.API(auth)
 
 # user tweets
 
-user =  []
+user =  ['DeniseR19794815','Kaleemu02531090','DrLiMenhYan04']
 for i in user:
    try:
       userw=api.get_user(screen_name=i)
    except:
-      print("Account Suspended)
+      print("Account Suspended")
       continue
    ID=userw.id_str
    screenname=userw.screen_name
@@ -48,7 +48,7 @@ for i in user:
    except AttributeError:
      status="none"
    name=userw.name
-   bot=0
+   bot=1
 
 # tweets = api.user_timeline(screen_name=user, count=limit, tweet_mode='extended')
 
