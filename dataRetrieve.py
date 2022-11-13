@@ -38,7 +38,10 @@ listed_count=userw.listed_count
 created_at=userw.created_at
 verified=userw.verified
 statuses_count=userw.statuses_count
-status=userw.status
+try:
+  status=userw.status
+except:
+  status="none"
 name=userw.name
 
 
