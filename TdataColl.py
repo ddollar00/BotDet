@@ -23,7 +23,7 @@ api = tweepy.API(auth)
 
 # user tweets
 
-user =  ['DeniseR19794815','Kaleemu02531090','DrLiMenhYan04']
+user =  []
 for i in user:
    try:
       userw=api.get_user(screen_name=i)
@@ -59,11 +59,11 @@ for i in user:
 
 
 #############################################################
-   with open('training_data_5.csv',mode='a',encoding='utf-8') as filee:
+   with open('training_data_2023.csv',mode='a',encoding='utf-8') as filee:
      
         writer=csv.writer(filee,delimiter=',',quoting=csv.QUOTE_MINIMAL)
        # writer.writerow(['id','screen_name','description','url','followers_count','friends_count','listed_count',
-      # 'verified','statuses_count','status','name','bot'])
+      #'verified','statuses_count','status','name','bot'])
         writer.writerow([ID,screenname,desc,url,followers_count,friends_count,listed_count,verified,statuses_count,status,name,bot])
  
 print("Done, all profiles are scraped")
