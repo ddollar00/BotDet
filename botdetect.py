@@ -50,6 +50,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.1,random
 
 model = DecisionTreeClassifier(criterion="gini", random_state=42,max_depth=5, min_samples_leaf=8)   
 model.fit(X_train,y_train)
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 def twitPredict():
   file= open('test6.csv', mode='r', encoding='utf-8', errors='ignore')
 
@@ -73,7 +74,7 @@ def twitPredict():
      
   return(classes[model.predict(test)[0]])
 
-#---------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 #GUI work
 sg.theme('DarkAmber')   # Add a touch of color
 # All the stuff inside your window.
@@ -89,35 +90,39 @@ window = sg.Window('Window Title', layout)
 while True:
   event, values = window.read()
   if event == sg.WIN_CLOSED or event == 'Cancel':
+    
     break
 
   elif event == 'Twitter':
     
-    layout2 = [[sg.Text('Enter a user ')],[sg.InputText()],[sg.Button('enter')],[sg.Button('close')]]
-    window2 = sg.Window('Window Title', layout2)
+    layout2 = [[sg.Text('Enter a user ')],[sg.InputText()],[sg.Text(" "),sg.Text(key='-rof-')],[sg.Button('enter')],[sg.Button('close')]]
+    window2 = sg.Window('Twitter Detector', layout2)
    
     window2.read()
 
     while True:
-          event, values = window.read()
-          if event == sg.WIN_CLOSED or event == 'close':
+          event2, values2 = window2.read()
+          if event2 == sg.WIN_CLOSED or event2 == 'close':
+              
               break
-          elif event == 'enter' :
-              collect(str(values[0]))
-              print('This profile is: ')
+          elif event2 == 'enter' :
+              
+              collect(str(values2[0]))
+              
               c=twitPredict()
-              sg.Text(c)
-              print(c)
-
+              window2['-rof-'].Update(f'This profile is  {c}')
+             
+    window2.close()
   elif event == 'Instagram':
     layout3 = [[sg.Text('Enter a user ')],[sg.InputText()],[sg.Button('enter')],[sg.Button('close')]]
-    window3 = sg.Window('Window Title', layout3)
+    window3 = sg.Window('Instagram detector', layout3)
     window3.read()
     while True:
-         event, values = window.read()
-         if event == sg.WIN_CLOSED or event == 'Cancel': # if user closes window or 		  clicks cancel
+         event3, values3 = window3.read()
+         if event3 == sg.WIN_CLOSED or event3 == 'Cancel': # if user closes window or 		  clicks cancel
+              window3.close()
               break
-
+window.close()
 
 
 

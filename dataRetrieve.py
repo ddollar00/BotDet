@@ -62,6 +62,6 @@ def collect(a):
        'verified','statuses_count','status','name'])
        writer.writerow([screenname,desc,url,followers_count,friends_count,verified,statuses_count,status,name])
  
-  print("Done, all profile data collected")
+  
 #os.system('python3 TBotDetection.py')
 
