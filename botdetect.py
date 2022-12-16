@@ -108,9 +108,9 @@ while True:
               break
           elif event2 == 'enter' :
               
-              collect(str(values2[0]))
+              collect(str(values2[0])) #collect data for user entered
               
-              c=twitPredict()
+              c=twitPredict() # decision tree makes prediction on user based on data collected
               window2['-rof-'].Update(f'This profile is  {c}')
              
     window2.close()
