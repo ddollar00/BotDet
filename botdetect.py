@@ -111,7 +111,7 @@ while True:
               collect(str(values2[0])) #collect data for user entered
               
               c=twitPredict() # decision tree makes prediction on user based on data collected
-              window2['-rof-'].Update(f'This profile is  {c}')
+              window2['-rof-'].Update(f'This profile is {c}')
              
     window2.close()
   elif event == 'Instagram':
@@ -120,12 +120,12 @@ while True:
     window3.read()
     while True:
          event3, values3 = window3.read()
-         if event3 == sg.WIN_CLOSED or event3 == 'Cancel': # if user closes window or 		  clicks cancel
+         if event3 == sg.WIN_CLOSED or event3 == 'close': # if user closes window or 		  clicks cancel
               
               break
-         elif event2 == 'enter' :
+         elif event3 == 'enter' :
               
-              collect(str(values2[0]))
+              collect(str(values3[0]))
               
               c=twitPredict()
               window3['-rof-'].Update(f'This profile is  {c}')
