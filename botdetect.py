@@ -15,8 +15,8 @@ from sklearn.metrics import accuracy_score, roc_curve, auc
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from dataRetrieve import collect
-
-#training decision tree
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                               #training Twitter decision tree
 file= 'training_data_2023.csv'
 
 training_data = pd.read_csv(file)
