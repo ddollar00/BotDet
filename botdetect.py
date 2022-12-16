@@ -16,6 +16,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from dataRetrieve import collect
 
+#training decision tree
 file= 'training_data_2023.csv'
 
 training_data = pd.read_csv(file)
@@ -114,14 +115,21 @@ while True:
              
     window2.close()
   elif event == 'Instagram':
-    layout3 = [[sg.Text('Enter a user ')],[sg.InputText()],[sg.Button('enter')],[sg.Button('close')]]
+    layout3 = [[sg.Text('Enter a user ')],[sg.InputText()],[sg.Text(" "),sg.Text(key='-rof-')],[sg.Button('enter')],[sg.Button('close')]]
     window3 = sg.Window('Instagram detector', layout3)
     window3.read()
     while True:
          event3, values3 = window3.read()
          if event3 == sg.WIN_CLOSED or event3 == 'Cancel': # if user closes window or 		  clicks cancel
-              window3.close()
+              
               break
+         elif event2 == 'enter' :
+              
+              collect(str(values2[0]))
+              
+              c=twitPredict()
+              window3['-rof-'].Update(f'This profile is  {c}')
+    window3.close()
 window.close()
 
 
