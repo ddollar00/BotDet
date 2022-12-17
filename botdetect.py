@@ -1,19 +1,6 @@
-import pandas as pd
-import matplotlib.pyplot as plt
-import matplotlib as mpl
-import seaborn as sns
-import warnings
-import numpy
-import re
+
 import PySimpleGUI as sg
 import os
-from sklearn import tree
-warnings.filterwarnings("ignore")
-
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.metrics import accuracy_score, roc_curve, auc
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
 from dataRetrieve import collect
 from twitDet import twitPredict
 
