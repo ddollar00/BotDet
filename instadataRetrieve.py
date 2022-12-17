@@ -24,7 +24,7 @@ def instacollection(a):
             for post in takewhile(lambda p: p.date > SINCE, dropwhile(lambda p: p.date > UNTIL, posts)):
             #adding the posts to a string in case there are multiple posts
                 p2 += str(post.date)+ "\n"
-                print( )
+                
         #writing the data into the csv file
             writer =csv.writer(f, delimiter =',', quoting= csv.QUOTE_MINIMAL)
             writer.writerow(['Username','User ID','Number of Posts','Followers Count','Following Count','Bio','External URL','Verified','Profile Pic','Real or Fake','Posts_Dates'])
