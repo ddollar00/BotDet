@@ -7,7 +7,7 @@ from twitDet import twitPredict
 from instaDet import instaPredict
 #GUI work
 
-sg.theme('DarkAmber')   # Add a touch of color
+sg.theme('SystemDefault')   # Add a touch of color
 # All the stuff inside your window.
 layout = [  [sg.Text('Welcome to ProfDetect')],
     [sg.Text('select which platform you want to use')],[ sg.Button('Instagram')],[sg.Button('Twitter')],
