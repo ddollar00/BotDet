@@ -18,6 +18,7 @@ from dataRetrieve import collect
 from twitDet import twitPredict
 
 #GUI work
+
 sg.theme('DarkAmber')   # Add a touch of color
 # All the stuff inside your window.
 layout = [  [sg.Text('Welcome to ProfDetect')],
@@ -25,7 +26,7 @@ layout = [  [sg.Text('Welcome to ProfDetect')],
      [sg.Button('Cancel')]]
 
 # Create the Window
-window = sg.Window('Window Title', layout)
+window = sg.Window('Profile Detector', layout)
 
 
 # Event Loop to process "events" and get the "values" of the inputs
