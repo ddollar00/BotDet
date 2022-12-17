@@ -2,8 +2,9 @@
 import PySimpleGUI as sg
 import os
 from dataRetrieve import collect
+from instadataRetrieve import instacollection
 from twitDet import twitPredict
-
+from instaDet import instaPredict
 #GUI work
 
 sg.theme('DarkAmber')   # Add a touch of color
@@ -54,9 +55,9 @@ while True:
               break
          elif event3 == 'enter' :
               
-              collect(str(values3[0]))
+              instacollection(str(values3[0]))
               
-              c=twitPredict()
+              c=instaPredict()
               window3['-rof-'].Update(f'This profile is  {c}')
     window3.close()
 window.close()
