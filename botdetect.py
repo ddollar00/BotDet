@@ -41,7 +41,7 @@ while True:
               collect(str(values2[0])) #collect data for user entered
               
               c=twitPredict() # decision tree makes prediction on user based on data collected
-              window2['-rof-'].Update(f'This profile is {c}')
+              window2['-rof-'].Update(f'This profile is : {c}')
              
     window2.close()
   elif event == 'Instagram':
@@ -58,7 +58,7 @@ while True:
               instacollection(str(values3[0]))
               
               c=instaPredict()
-              window3['-rof-'].Update(f'This profile is  {c}')
+              window3['-rof-'].Update(f'This profile is : {c}')
     window3.close()
 window.close()
 
