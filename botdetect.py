@@ -26,7 +26,7 @@ while True:
 
   elif event == 'Twitter':
     
-    layout2 = [[sg.Text('Enter a user ')],[sg.InputText()],[sg.Text(" "),sg.Text(key='-rof-')],[sg.Button('enter')],[sg.Button('close')]]
+    layout2 = [[sg.Text('Enter a user ')],[sg.InputText()],[sg.Text('Status: ')],[sg.Text(" "),sg.Text(key='-rof-')],[sg.Button('enter')],[sg.Button('close')]]
     window2 = sg.Window('Twitter Detector', layout2)
    
     window2.read()
@@ -37,15 +37,18 @@ while True:
               
               break
           elif event2 == 'enter' :
+              try:
+                    collect(str(values2[0])) #collect data for user entered
+                    c=twitPredict() # decision tree makes prediction on user based on data collected
+                    window2['-rof-'].Update(f'This profile is {c}')
+              except:
+                    window2['-rof-'].Update(f'Account suspended or doesnt exist')
               
-              collect(str(values2[0])) #collect data for user entered
               
-              c=twitPredict() # decision tree makes prediction on user based on data collected
-              window2['-rof-'].Update(f'This profile is : {c}')
              
     window2.close()
   elif event == 'Instagram':
-    layout3 = [[sg.Text('Enter a user ')],[sg.InputText()],[sg.Text(" "),sg.Text(key='-rof-')],[sg.Button('enter')],[sg.Button('close')]]
+    layout3 = [[sg.Text('Enter a user ')],[sg.InputText()],[sg.Text('Status: ')],[sg.Text(" "),sg.Text(key='-rof-')],[sg.Button('enter')],[sg.Button('close')]]
     window3 = sg.Window('Instagram detector', layout3)
     window3.read()
     while True:
@@ -58,7 +61,7 @@ while True:
               instacollection(str(values3[0]))
               
               c=instaPredict()
-              window3['-rof-'].Update(f'This profile is : {c}')
+              window3['-rof-'].Update(f'This profile is {c}')
     window3.close()
 window.close()
 
