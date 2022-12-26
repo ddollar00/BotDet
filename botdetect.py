@@ -11,7 +11,7 @@ sg.theme('SystemDefault')   # Add a touch of color
 # All the stuff inside your window.
 layout = [  [sg.Text('Welcome to ProfDetect')],
     [sg.Text('select which platform you want to use')],[ sg.Button('Instagram',size=(7,1))],[sg.Button('Twitter',size=(7,1))],
-     [sg.Button('Cancel',size=(7,1))]]
+     [sg.Button('Cancel',size=(7,1),button_color=('red'))]]
 
 # Create the Window
 window = sg.Window('Profile Detector', layout)
