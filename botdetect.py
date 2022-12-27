@@ -26,7 +26,7 @@ while True:
 
   elif event == 'Twitter':
     
-    layout2 = [[sg.Text('Enter a user ')],[sg.InputText()],[sg.Text('Status: ')],[sg.Text(" "),sg.Text(key='-rof-')],[sg.Button('enter')],[sg.Button('close')]]
+    layout2 = [[sg.Text('Enter a user ')],[sg.InputText()],[sg.Text('Status: ')],[sg.Text(" "),sg.Text(key='-rof-')],[sg.Button('enter')],[sg.Button('close',button_color=('red'))]]
     window2 = sg.Window('Twitter Detector', layout2)
    
     window2.read()
@@ -48,7 +48,7 @@ while True:
              
     window2.close()
   elif event == 'Instagram':
-    layout3 = [[sg.Text('Enter a user ')],[sg.InputText()],[sg.Text('Status: ')],[sg.Text(" "),sg.Text(key='-rof-')],[sg.Button('enter')],[sg.Button('close')]]
+    layout3 = [[sg.Text('Enter a user ')],[sg.InputText()],[sg.Text('Status: ')],[sg.Text(" "),sg.Text(key='-rof-')],[sg.Button('enter')],[sg.Button('close',button_color=('red'))]]
     window3 = sg.Window('Instagram detector', layout3)
     window3.read()
     while True:
