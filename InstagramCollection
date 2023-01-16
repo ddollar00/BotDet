@@ -31,4 +31,25 @@ for username in users:
         #using instaloader class to pull certain key information
         writer.writerow([profile.username,profile.userid,profile.mediacount,profile.followers,profile.followees,profile.biography,profile.external_url,profile.is_verified,profile.get_profile_pic_url(),"  ", p2])
         
+    #import instaloader
+#import pandas as pd
+#L = instaloader.Instaloader()
+
+#users=["mk.raven"]
+#username = users
+#for username in users:
+# Loading a profile from an Instagram handle
+    #with open("Instagram.txt", "a")as f:
+    #    profile = instaloader.Profile.from_username(L.context, username)
+    #    print("Username: ", profile.username, file =f)
+    #    print("User ID: ", profile.userid,file =f )
+    #    print("Number of Posts: ", profile.mediacount,file =f)
+    #    print("Followers Count: ", profile.followers,file =f)
+    #    print("Following Count: ", profile.followees,file =f)
+    #    print("Bio: ", profile.biography,file =f)
+    #    print("External URL: ", profile.external_url,file =f)
+    #    print("Verified: ",profile.is_verified, file = f)
+    #    print("Profile Pic ",profile.get_profile_pic_url(), file = f)
     
+
+
