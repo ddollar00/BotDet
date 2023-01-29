@@ -13,7 +13,7 @@ from sklearn.linear_model import LinearRegression
     
 def instaPredict():
         filepath = '/Users/ravendenise/Desktop/BotDet/'
-        file= open('TestingIG2_data - TestingIG_data.csv', mode='r', encoding='utf-8', errors='ignore')
+        file= open('TestingIG2_data - TestingIG_data 1 - in.csv', mode='r', encoding='utf-8', errors='ignore')
 
         training_data = pd.read_csv(file)
 
