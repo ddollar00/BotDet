@@ -16,10 +16,10 @@ def instacollection(a):
             profile = instaloader.Profile.from_username(bot.context, username)
            #loading the posts of each user within the certain date points
             posts = instaloader.Profile.from_username(bot.context, username).get_posts()
-            #SINCE = datetime(2022,9,3)
-            SINCE = datetime(current_date.year,current_date.month-1,3)
-            #UNTIL = datetime(2022,10,13)
-            UNTIL = datetime(current_date.year,current_date.month,20)
+            SINCE = datetime(2022,9,3)
+            #SINCE = datetime(current_date.year,current_date.month-1,3)
+            UNTIL = datetime(2022,10,13)
+            #UNTIL = datetime(current_date.year,current_date.month,20)
             #setting a variable to an empty string
             p2 = " "
             #creating a statement to allow post to be printed based on the dates set
