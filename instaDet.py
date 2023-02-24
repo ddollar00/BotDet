@@ -17,7 +17,7 @@ def instaPredict():
 
         training_data = pd.read_csv(file)
 
-        bag_of_words_bot = r'cash|help|sugar daddy|hacked|follow me|money|essay|forget|paypal|logo|nft|crypto|assignment|locked|sex|play|$|' \
+        bag_of_words_bot = r'cash|help|sugar daddy|hacked|follow me|money|essay|forget|paypal|logo|nft|crypto|assignment|locked|sex|play|$|dating|play' \
                   
         def sameDate(c):
             count=0
@@ -44,7 +44,7 @@ def instaPredict():
 
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.1,random_state=42)
 
-        model = DecisionTreeClassifier(criterion="gini", random_state=42,max_depth=5, min_samples_leaf=8)   
+        model = DecisionTreeClassifier(criterion="gini", random_state=42,max_depth=3, min_samples_leaf=8)   
         model.fit(X_train,y_train) 
         file= open('userig2.csv', mode='r', encoding='utf-8', errors='ignore')
         training_data = pd.read_csv(file)

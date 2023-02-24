@@ -14,7 +14,10 @@ def instacollection(a):
        current_date=datetime.now()
        with open("userig2.csv", mode = 'w', encoding='utf-8')as f:
             #loading the profile of each user 
-            profile = instaloader.Profile.from_username(bot.context, username)
+            try:
+                    profile = instaloader.Profile.from_username(bot.context, username)
+            except:
+                    print("Stop")
            #loading the posts of each user within the certain date points
             posts = instaloader.Profile.from_username(bot.context, username).get_posts()
            # SINCE = datetime(2022,9,3)

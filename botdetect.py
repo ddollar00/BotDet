@@ -57,11 +57,13 @@ while True:
               
               break
          elif event3 == 'enter' :
+              try:
+                    instacollection(str(values3[0]))
               
-              instacollection(str(values3[0]))
-              
-              c=instaPredict()
-              window3['-rof-'].Update(f'This profile is {c}')
+                    c=instaPredict()
+                    window3['-rof-'].Update(f'This profile is {c}')
+              except:
+                    window3['-rof-'].Update(f'Account suspended or doesnt exist')
     window3.close()
 window.close()
 
