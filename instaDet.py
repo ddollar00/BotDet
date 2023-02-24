@@ -19,12 +19,23 @@ def instaPredict():
 
         bag_of_words_bot = r'cash|help|sugar daddy|hacked|follow me|money|essay|forget|paypal|logo|nft|crypto|assignment|locked|sex|play|$|' \
                   
-                  
+        def sameDate(c):
+            count=0
+            for i in c:
+                temp=-1
+                for j in c:
+                    if j.split(" ")[0]==i.split(" ")[0]:
+                        temp+=1
+                if temp > count:
+                    count=temp
+            return count
+             
             #na =false sets nan values to false
-
-        training_data['Username'] = training_data['Username'].str.contains(bag_of_words_bot, case=False, na=False)
-        training_data['Bio'] = training_data['Bio'].str.contains(bag_of_words_bot, case=False, na=False)
-         
+        for i in range(len(training_data)):
+            c= (str(training_data.loc[i,"Posts_Dates"]).split("\n"))
+            training_data.loc[i,"Username"]= training_data.loc[i,"Username"] not in bag_of_words_bot
+            training_data.loc[i,"Bio"]= str(training_data.loc[i,"Bio"]) not in bag_of_words_bot 
+            training_data.loc[i,"Posts_Dates"]= (sameDate(c)>=2)
         features = ['Username', 'Number of Posts', 'Followers Count', 'Following Count', 'Bio', 'Verified','Real or Fake']
 
         X = training_data[features].iloc[:,:-1] #iloc gives us row,all column elements except the last one
