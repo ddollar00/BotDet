@@ -53,7 +53,7 @@ while True:
     window3.read()
     while True:
          event3, values3 = window3.read()
-         if event3 == sg.WIN_CLOSED or event3 == 'close': # if user closes window or 		  clicks cancel
+         if event3 == sg.WIN_CLOSED or event3 == 'close': # if user closes window or licks cancel
               
               break
          elif event3 == 'enter' :
