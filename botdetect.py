@@ -1,17 +1,21 @@
-
+ 
 import PySimpleGUI as sg
 import os
-from dataRetrieve import collect
-from instadataRetrieve import instacollection
+from dataRetrieve import collect,pic
+from instadataRetrieve import instacollection,pic
 from twitDet import twitPredict
 from instaDet import instaPredict
+import io
+import cloudscraper
+from PIL import Image
 #GUI work
 
-sg.theme('SystemDefault')   # Add a touch of color
+sg.theme('DarkGrey10')   # Add a touch of color
 # All the stuff inside your window.
-layout = [  [sg.Text('Welcome to ProfDetect')],
-    [sg.Text('select which platform you want to use')],[ sg.Button('Instagram',size=(7,1))],[sg.Button('Twitter',size=(7,1))],
-     [sg.Button('Cancel',size=(7,1),button_color=('red'))]]
+layout = [  [sg.Text('Social Media Bot Detector')],
+    [sg.Text('select the app you want to use')],[sg.Image('instagram.png',pad=(0,0)), sg.Button('Instagram',size=(7,1))],
+    [sg.Image('twitter.png',pad=(0,0)),sg.Button('Twitter',size=(7,1))],
+   [sg.Button('Cancel',size=(7,1),pad=(0,0),button_color=('red'))]]
 
 # Create the Window
 window = sg.Window('Profile Detector', layout)
@@ -26,7 +30,9 @@ while True:
 
   elif event == 'Twitter':
     
-    layout2 = [[sg.Text('Enter a user ')],[sg.InputText()],[sg.Text('Status: ')],[sg.Text(" "),sg.Text(key='-rof-')],[sg.Button('enter')],[sg.Button('close',button_color=('red'))]]
+    layout2 = [[sg.Text('Enter a user ')],[sg.InputText()],[sg.Text('Status: '),sg.Text(key='-rof-')],
+    [sg.Push(),sg.Image(key='-img-',visible=True),sg.Push()],
+              [sg.Push(),sg.Button('enter'),sg.Push()],[sg.Push(),sg.Button('close',button_color=('red')),sg.Push()],[sg.Image('twitter.png')]]
     window2 = sg.Window('Twitter Detector', layout2)
    
     window2.read()
@@ -40,7 +46,9 @@ while True:
               try:
                     collect(str(values2[0])) #collect data for user entered
                     c=twitPredict() # decision tree makes prediction on user based on data collected
+                    d = pic(str(values2[0]))# collects profile picture data and converts it to a usable format,png
                     window2['-rof-'].Update(f'This profile is {c}')
+                    window2['-img-'].Update(data=d)
               except:
                     window2['-rof-'].Update(f'Account suspended or doesnt exist')
               
@@ -48,7 +56,8 @@ while True:
              
     window2.close()
   elif event == 'Instagram':
-    layout3 = [[sg.Text('Enter a user ')],[sg.InputText()],[sg.Text('Status: ')],[sg.Text(" "),sg.Text(key='-rof-')],[sg.Button('enter')],[sg.Button('close',button_color=('red'))]]
+    layout3 = [[sg.Text('Enter a user ')],[sg.InputText()],[sg.Text('Status: ')],[sg.Text(" "),sg.Text(key='-rof-')],[sg.Push(),sg.Image(key='-img-',visible=True),sg.Push()],
+[sg.Push(),sg.Button('enter'),sg.Push()],[sg.Push(),sg.Button('close',button_color=('red')),sg.Push()],[sg.Image('instagram.png')]]
     window3 = sg.Window('Instagram detector', layout3)
     window3.read()
     while True:
@@ -57,16 +66,17 @@ while True:
               
               break
          elif event3 == 'enter' :
-              try:
+              try:  
+                    
                     instacollection(str(values3[0]))
-              
+                    d=pic(str(values3[0]))
                     c=instaPredict()
                     window3['-rof-'].Update(f'This profile is {c}')
+                    window3['-img-'].Update(data=d)
               except:
                     window3['-rof-'].Update(f'Account suspended or doesnt exist')
     window3.close()
 window.close()
-
 
 
 
