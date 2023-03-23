@@ -1,10 +1,13 @@
  
 import PySimpleGUI as sg
 import os
-from dataRetrieve import collect
+from dataRetrieve import collect,pic
 from instadataRetrieve import instacollection
 from twitDet import twitPredict
 from instaDet import instaPredict
+import io
+import cloudscraper
+from PIL import Image
 #GUI work
 
 sg.theme('DarkGrey10')   # Add a touch of color
@@ -27,7 +30,8 @@ while True:
 
   elif event == 'Twitter':
     
-    layout2 = [[sg.Text('Enter a user ')],[sg.InputText()],[sg.Text('Status: ')],[sg.Text(" "),sg.Text(key='-rof-')],
+    layout2 = [[sg.Text('Enter a user ')],[sg.InputText()],[sg.Text('Status: '),sg.Text(key='-rof-')],
+    [sg.Push(),sg.Image(key='-img-',visible=True),sg.Push()],
               [sg.Push(),sg.Button('enter'),sg.Push()],[sg.Push(),sg.Button('close',button_color=('red')),sg.Push()],[sg.Image('twitter.png')]]
     window2 = sg.Window('Twitter Detector', layout2)
    
@@ -42,7 +46,9 @@ while True:
               try:
                     collect(str(values2[0])) #collect data for user entered
                     c=twitPredict() # decision tree makes prediction on user based on data collected
+                    d = pic(str(values2[0]))# collects profile picture data and converts it to a usable format,png
                     window2['-rof-'].Update(f'This profile is {c}')
+                    window2['-img-'].Update(data=d)
               except:
                     window2['-rof-'].Update(f'Account suspended or doesnt exist')
               
@@ -50,7 +56,7 @@ while True:
              
     window2.close()
   elif event == 'Instagram':
-    layout3 = [[sg.Text('Enter a user ')],[sg.InputText()],[sg.Text('Status: ')],[sg.Text(" "),sg.Text(key='-rof-')],
+    layout3 = [[sg.Text('Enter a user ')],[sg.InputText()],[sg.Text('Status: ')],[sg.Text(" "),sg.Text(key='-rof-')],[sg.Push(),sg.Image(key='-img-',visible=True),sg.Push()],
 [sg.Push(),sg.Button('enter'),sg.Push()],[sg.Push(),sg.Button('close',button_color=('red')),sg.Push()],[sg.Image('instagram.png')]]
     window3 = sg.Window('Instagram detector', layout3)
     window3.read()
@@ -60,11 +66,25 @@ while True:
               
               break
          elif event3 == 'enter' :
-              try:
+              try:  
+                    
+                    url = "https://scontent-atl3-1.cdninstagram.com/v/t51.2885-19/334844346_672043391416102_183500895920340597_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-atl3-1.cdninstagram.com&_nc_cat=110&_nc_ohc=0NBIvVXfw_sAX8Nr7ma&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfBP11Eau8YvWvKKOABxSWOyYwJOc2EYAWz82KA0LmGupA&oe=64209783&_nc_sid=8fd12b"
+                    jpg_data = (
+                       cloudscraper.create_scraper(
+                          browser={"browser": "firefox", "platform": "windows", "mobile": False}
+                       )
+                         .get(url)
+                         .content
+                    )
+                    pil_image = Image.open(io.BytesIO(jpg_data))
+                    png_bio = io.BytesIO()
+                    pil_image.save(png_bio, format="PNG")
+                    png_data = png_bio.getvalue()
                     instacollection(str(values3[0]))
               
                     c=instaPredict()
                     window3['-rof-'].Update(f'This profile is {c}')
+                    window3['-img-'].Update(data=png_data)
               except:
                     window3['-rof-'].Update(f'Account suspended or doesnt exist')
     window3.close()
