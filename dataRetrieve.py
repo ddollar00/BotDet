@@ -101,23 +101,6 @@ def pic(a):
   pil_image.save(png_bio, format="PNG")
   png_data = png_bio.getvalue()
   return png_data
-#CODE TO CONVERT JPG TO PNG#################################FOR RAVEN#########################################
-url = "https://scontent-atl3-1.cdninstagram.com/v/t51.2885-19/334844346_672043391416102_183500895920340597_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-atl3-1.cdninstagram.com&_nc_cat=110&_nc_ohc=0NBIvVXfw_sAX8Nr7ma&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfBP11Eau8YvWvKKOABxSWOyYwJOc2EYAWz82KA0LmGupA&oe=64209783&_nc_sid=8fd12b"
-jpg_data = (
-   cloudscraper.create_scraper(
-        browser={"browser": "firefox", "platform": "windows", "mobile": False}
-   )
-   .get(url)
-   .content
-)
-pil_image = Image.open(io.BytesIO(jpg_data))
-png_bio = io.BytesIO()
-pil_image.save(png_bio, format="PNG")
-png_data = png_bio.getvalue()
-
-################################################################################################################
-print(png_data)
- 
   
 
 

@@ -2,7 +2,7 @@
 import PySimpleGUI as sg
 import os
 from dataRetrieve import collect,pic
-from instadataRetrieve import instacollection
+from instadataRetrieve import instacollection,pic
 from twitDet import twitPredict
 from instaDet import instaPredict
 import io
@@ -68,23 +68,11 @@ while True:
          elif event3 == 'enter' :
               try:  
                     
-                    url = "https://scontent-atl3-1.cdninstagram.com/v/t51.2885-19/334844346_672043391416102_183500895920340597_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-atl3-1.cdninstagram.com&_nc_cat=110&_nc_ohc=0NBIvVXfw_sAX8Nr7ma&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfBP11Eau8YvWvKKOABxSWOyYwJOc2EYAWz82KA0LmGupA&oe=64209783&_nc_sid=8fd12b"
-                    jpg_data = (
-                       cloudscraper.create_scraper(
-                          browser={"browser": "firefox", "platform": "windows", "mobile": False}
-                       )
-                         .get(url)
-                         .content
-                    )
-                    pil_image = Image.open(io.BytesIO(jpg_data))
-                    png_bio = io.BytesIO()
-                    pil_image.save(png_bio, format="PNG")
-                    png_data = png_bio.getvalue()
                     instacollection(str(values3[0]))
-              
+                    d=pic(str(values3[0]))
                     c=instaPredict()
                     window3['-rof-'].Update(f'This profile is {c}')
-                    window3['-img-'].Update(data=png_data)
+                    window3['-img-'].Update(data=d)
               except:
                     window3['-rof-'].Update(f'Account suspended or doesnt exist')
     window3.close()
