@@ -12,13 +12,15 @@ from PIL import Image
 
 sg.theme('DarkGrey10')   # Add a touch of color
 # All the stuff inside your window.
-layout = [  [sg.Text('Social Media Bot Detector')],
-    [sg.Text('select the app you want to use')],[sg.Image('instagram.png',pad=(0,0)), sg.Button('Instagram',size=(7,1))],
-    [sg.Image('twitter.png',pad=(0,0)),sg.Button('Twitter',size=(7,1))],
-   [sg.Button('Cancel',size=(7,1),pad=(0,0),button_color=('red'))]]
+font = ("Arial", 18)
+font2 =("Calibri", 12)
+layout = [  [sg.Text('Social Media Bot Detector', key ='-text-', font =font)],
+    [sg.Text('select the app you want to use', key = '-text-', font = font2)],[sg.Image('instagram.png',pad=(10,16)), sg.Button('Instagram',button_color=('purple'), font = font)],
+    [sg.Image('twitter.png',pad=(10,17)),sg.Button('Twitter', button_color=('blue'),font = font)],
+   [sg.Button('Cancel',pad=(12,19),button_color=('red'),font = font)]]
 
 # Create the Window
-window = sg.Window('Profile Detector', layout)
+window = sg.Window('Profile Detector', layout, size=(300, 300))
 
 
 # Event Loop to process "events" and get the "values" of the inputs
@@ -30,9 +32,9 @@ while True:
 
   elif event == 'Twitter':
     
-    layout2 = [[sg.Text('Enter a user ')],[sg.InputText()],[sg.Text('Status: '),sg.Text(key='-rof-')],
+    layout2 = [[sg.Text('Enter a user ', font = font)],[sg.InputText(font = font)],[sg.Text('Status: ', font = font),sg.Text(key='-rof-')],
     [sg.Push(),sg.Image(key='-img-',visible=True),sg.Push()],
-              [sg.Push(),sg.Button('enter'),sg.Push()],[sg.Push(),sg.Button('close',button_color=('red')),sg.Push()],[sg.Image('twitter.png')]]
+              [sg.Push(),sg.Button('enter', font = font, button_color =('green')),sg.Push()],[sg.Push(),sg.Button('close',button_color=('red'), font = font),sg.Push()],[sg.Image('twitter.png')]]
     window2 = sg.Window('Twitter Detector', layout2)
    
     window2.read()
@@ -47,17 +49,17 @@ while True:
                     collect(str(values2[0])) #collect data for user entered
                     c=twitPredict() # decision tree makes prediction on user based on data collected
                     d = pic(str(values2[0]))# collects profile picture data and converts it to a usable format,png
-                    window2['-rof-'].Update(f'This profile is {c}')
+                    window2['-rof-'].Update(f'This profile is {c}', font =font)
                     window2['-img-'].Update(data=d)
               except:
-                    window2['-rof-'].Update(f'Account suspended or doesnt exist')
+                    window2['-rof-'].Update(f'Account suspended or doesnt exist', font = font)
               
               
              
     window2.close()
   elif event == 'Instagram':
-    layout3 = [[sg.Text('Enter a user ')],[sg.InputText()],[sg.Text('Status: ')],[sg.Text(" "),sg.Text(key='-rof-')],[sg.Push(),sg.Image(key='-img-',visible=True),sg.Push()],
-[sg.Push(),sg.Button('enter'),sg.Push()],[sg.Push(),sg.Button('close',button_color=('red')),sg.Push()],[sg.Image('instagram.png')]]
+    layout3 = [[sg.Text('Enter a user ', font = font)],[sg.InputText(font = font)],[sg.Text('Status: ', font = font)],[sg.Text(" "),sg.Text(key='-rof-')],[sg.Push(),sg.Image(key='-img-',visible=True),sg.Push()],
+[sg.Push(),sg.Button('enter', font = font, button_color =('green')),sg.Push()],[sg.Push(),sg.Button('close',button_color=('red'), font = font),sg.Push()],[sg.Image('instagram.png')]]
     window3 = sg.Window('Instagram detector', layout3)
     window3.read()
     while True:
@@ -71,10 +73,10 @@ while True:
                     instacollection(str(values3[0]))
                     d=pic(str(values3[0]))
                     c=instaPredict()
-                    window3['-rof-'].Update(f'This profile is {c}')
+                    window3['-rof-'].Update(f'This profile is {c}', font = font)
                     window3['-img-'].Update(data=d)
               except:
-                    window3['-rof-'].Update(f'Account suspended or doesnt exist')
+                    window3['-rof-'].Update(f'Account suspended or doesnt exist', font = font)
     window3.close()
 window.close()
 
