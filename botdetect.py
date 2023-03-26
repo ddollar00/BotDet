@@ -8,6 +8,8 @@ from instaDet import instaPredict
 import io
 import cloudscraper
 from PIL import Image
+from tqdm import tqdm
+
 #GUI work
 
 sg.theme('DarkGrey10')   # Add a touch of color
@@ -20,7 +22,7 @@ layout = [  [sg.Text('Social Media Bot Detector', key ='-text-', font =font)],
    [sg.Button('Cancel',pad=(12,19),button_color=('red'),font = font)]]
 
 # Create the Window
-window = sg.Window('Profile Detector', layout, size=(300, 300))
+window = sg.Window('Profile Detector', layout, size=(310, 310))
 
 
 # Event Loop to process "events" and get the "values" of the inputs
@@ -48,9 +50,11 @@ while True:
               try:
                     collect(str(values2[0])) #collect data for user entered
                     c=twitPredict() # decision tree makes prediction on user based on data collected
-                    d = pic(str(values2[0]))# collects profile picture data and converts it to a usable format,png
+                    
+                   
                     window2['-rof-'].Update(f'This profile is {c}', font =font)
-                    window2['-img-'].Update(data=d)
+                    #d = pic(str(values2[0]))# collects profile picture data and converts it to a usable format,png
+                    #window2['-img-'].Update(data=d)
               except:
                     window2['-rof-'].Update(f'Account suspended or doesnt exist', font = font)
               

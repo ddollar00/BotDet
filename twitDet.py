@@ -28,7 +28,7 @@ def twitPredict():
 
   training_data = pd.read_csv(file)
 
-  bag_of_words_bot = r'Homework|help|sugar daddy|bot|Bot|tweet me|hacked|follow me|updates every|essay|forget|paypal|logo|nft|crypto|assignment|locked|' \
+  bag_of_words_bot = r'Homework|help|sugar daddy|bot|Bot|tweet me|hacked|follow me|updates every|essay|forget|paypal|logo|nft|crypto|assignment|locked|essays|Maths|Psychology|Writers|' \
           
     #na =false sets nan values to false
 
@@ -49,7 +49,7 @@ def twitPredict():
 
   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.1,random_state=42)
 
-  model = DecisionTreeClassifier(criterion="gini", random_state=42,max_depth=5, min_samples_leaf=8)   
+  model = DecisionTreeClassifier(criterion="gini", random_state=42,max_depth=20, min_samples_leaf=20)   
   model.fit(X_train,y_train)
 
   file= open('test6.csv', mode='r', encoding='utf-8', errors='ignore')
