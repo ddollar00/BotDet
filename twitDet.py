@@ -49,7 +49,7 @@ def twitPredict():
 
   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.1,random_state=42)
 
-  model = DecisionTreeClassifier(criterion="gini", random_state=42,max_depth=20, min_samples_leaf=20)   
+  model = DecisionTreeClassifier(criterion="gini", random_state=42,max_depth=5, min_samples_leaf=10)   
   model.fit(X_train,y_train)
 
   file= open('test6.csv', mode='r', encoding='utf-8', errors='ignore')
