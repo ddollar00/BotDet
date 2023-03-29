@@ -7,8 +7,9 @@ import pandas as pd
 import os
 import io
 import cloudscraper
+
 from PIL import Image
-from tqdm import tqdm
+
 # read configs
 config = configparser.ConfigParser()
 config.read('config.ini')
@@ -68,19 +69,19 @@ def collect(a):
  
   
 #os.system('python3 TBotDetection.py')
-def pic(a):
+def picc(a):
 
 
 # user tweets
   #print("enter user:")
   user =  a
   userw=api.get_user(screen_name=user)
-
+          
   jpg_data = (
     cloudscraper.create_scraper(
         browser={"browser": "firefox", "platform": "windows", "mobile": False}
     )
-    .get(userw.profile_image_url)
+    .get(userw.profile_image_url_https)
     .content
   )
   pil_image = Image.open(io.BytesIO(jpg_data))
