@@ -59,7 +59,7 @@ while True:
                     window2['-pbar-'].Update(current_count=r+1)
 
                     window2['-rof-'].Update(f'            This profile is {c}', font =font)
-                    window2['-img-'].Update(data=d)
+                    window2['-img-'].Update(size=(300,300),data=d)
 
                     window2['-pbar-'].Update(current_count=0)
               except:

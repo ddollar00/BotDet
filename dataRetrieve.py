@@ -76,12 +76,12 @@ def picc(a):
   #print("enter user:")
   user =  a
   userw=api.get_user(screen_name=user)
-          
+  url=userw.profile_image_url_https.replace("_normal",'')        
   jpg_data = (
     cloudscraper.create_scraper(
         browser={"browser": "firefox", "platform": "windows", "mobile": False}
     )
-    .get(userw.profile_image_url_https)
+    .get(url)
     .content
   )
   pil_image = Image.open(io.BytesIO(jpg_data))
