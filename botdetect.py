@@ -84,6 +84,7 @@ while True:
                     instacollection(str(values3[0]))
                     window3['-pbar-'].Update(current_count=r+1)
                     r+=1
+                #change button for picture to pull up the profile picture 
                     d=pic(str(values3[0]))        
                     window3['-pbar-'].Update(current_count=r+1)
                     r+=1
