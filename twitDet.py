@@ -52,6 +52,13 @@ def twitPredict():
   model = DecisionTreeClassifier(criterion="gini", random_state=42,max_depth=5, min_samples_leaf=10)   
   model.fit(X_train,y_train)
 
+
+ 
+  y_pred_train = model.predict(X_train)
+
+
+  d="%.0f" %(accuracy_score(y_train, y_pred_train)*100)
+
   file= open('test6.csv', mode='r', encoding='utf-8', errors='ignore')
 
   data = pd.read_csv(file)
@@ -71,5 +78,5 @@ def twitPredict():
 #data['status'] = data.status.str.contains(bag_of_words_bot, case=False, na=False)
   classes=['real','fake']
   test=data[features]
-     
-  return(classes[model.predict(test)[0]])
+  arr=[classes[model.predict(test)[0]],d]   
+  return(arr)
