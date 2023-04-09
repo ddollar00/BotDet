@@ -1,7 +1,7 @@
  
 import PySimpleGUI as sg
 import os
-from dataRetrieve import collect,picc
+from dataRetrieve import collect,picc,profss
 from instadataRetrieve import instacollection,pic
 from twitDet import twitPredict
 from instaDet import instaPredict
@@ -38,7 +38,8 @@ while True:
 [sg.Text('Status: ', font = font),sg.Text(key='-rof-')],[sg.Text('Detection Accuracy: ', font = font),sg.Text(key='-for-')],
     [sg.Push(),sg.Image(key='-img-',visible=True),sg.Push()],
               [sg.Push(),sg.Button('enter', font = font, button_color =('green')),sg.Push()],
-[sg.Push(),sg.Button('close',button_color=('red'), font = font),sg.Push()],[sg.Image('twitter.png')]]
+[sg.Push(),sg.Button('close',button_color=('red'), font = font),sg.Push()],
+[sg.Push(),sg.Button('profile', font = font, button_color =('blue')),sg.Push()],[sg.Image('twitter.png')]]
     window2 = sg.Window('Twitter Detector', layout2)
    
     window2.read()
@@ -66,7 +67,11 @@ while True:
                     window2['-pbar-'].Update(current_count=0)
               except:
                     window2['-rof-'].Update(f'Account suspended or doesnt exist', font = font)
-              
+          if event2 =='profile':
+                  
+                  if len(str(values2[0]))!=0:
+                    profss(str(values2[0]))
+    
               
              
     window2.close()
