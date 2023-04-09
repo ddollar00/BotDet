@@ -23,7 +23,7 @@ api = tweepy.API(auth)
 
 # user tweets
 
-user =  ['']
+user =  ['Barbara303342060']
 for i in user:
    try:
       userw=api.get_user(screen_name=i)
