@@ -5,6 +5,7 @@ from dataRetrieve import collect,picc
 from instadataRetrieve import instacollection,pic
 from twitDet import twitPredict
 from instaDet import instaPredict
+from Screenshot import profileReciever
 import io
 import cloudscraper
 from PIL import Image
@@ -71,7 +72,7 @@ while True:
              
     window2.close()
   elif event == 'Instagram':
-    layout3 = [[sg.Text('Enter a user ', font = font)],[sg.InputText(font = font)],[sg.ProgressBar(3,orientation='h',expand_x=True,size=(20,20),key='-pbar-')],
+    layout3 = [[sg.Text('Enter a user ', font = font)],[sg.InputText(font = font)],[sg.ProgressBar(4,orientation='h',expand_x=True,size=(20,20),key='-pbar-')],
 [sg.Text('Status: ', font = font),sg.Text(key='-rof-')],[sg.Push(),sg.Image(key='-img-',visible=True),sg.Push()],
 [sg.Push(),sg.Button('enter', font = font, button_color =('green')),sg.Push()],[sg.Push(),sg.Button('close',button_color=('red'), font = font),sg.Push()],
 [sg.Image('instagram.png')]]
@@ -80,23 +81,25 @@ while True:
     while True:
          event3, values3 = window3.read()
          if event3 == sg.WIN_CLOSED or event3 == 'close': # if user closes window or licks cancel
-              window3['-pbar-'].Update(max=3)
+              window3['-pbar-'].Update(max=4)
               break
          elif event3 == 'enter' :
               try:  
-                    r=0
-                    instacollection(str(values3[0]))
-                    window3['-pbar-'].Update(current_count=r+1)
-                    r+=1
-                #change button for picture to pull up the profile picture 
-                    d=pic(str(values3[0]))        
-                    window3['-pbar-'].Update(current_count=r+1)
-                    r+=1
-                    c=instaPredict()
-                    window3['-pbar-'].Update(current_count=r+1)
-                    window3['-rof-'].Update(f'          This profile is {c}', font = font)
-                    window3['-img-'].Update(data=d)
-                    window3['-pbar-'].Update(current_count=0)
+                   r=0
+                   instacollection(str(values3[0]))
+                   window3['-pbar-'].Update(current_count=r+1)
+                   r+=1
+                   profileReceiver(str(values3[0]))
+                   window3['-pbar-'].Update(current_count=r+1)
+                   r+=1
+                   d=pic(str(values3[0]))        
+                   window3['-pbar-'].Update(current_count=r+1)
+                   r+=1
+                   c=instaPredict()
+                   window3['-pbar-'].Update(current_count=r+1)
+                   window3['-rof-'].Update(f'          This profile is {c}', font = font)
+                   window3['-img-'].Update(data=d)
+                   window3['-pbar-'].Update(current_count=0) 
               except:
                     window3['-rof-'].Update(f'Account suspended or doesnt exist', font = font)
     window3.close()
