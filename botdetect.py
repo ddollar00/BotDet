@@ -6,9 +6,7 @@ from instadataRetrieve import instacollection,pic,profileReciever
 from twitDet import twitPredict
 from instaDet import instaPredict
 import io
-import cloudscraper
-from PIL import Image
-from tqdm import tqdm
+
 
 #GUI work
 
@@ -35,7 +33,7 @@ while True:
   elif event == 'Twitter':
     
     layout2 = [[sg.Text('Enter a user ', font = font)],[sg.InputText(font = font)],[sg.ProgressBar(3,orientation='h',expand_x=True,size=(20,20),key='-pbar-')],
-[sg.Text('Status: ', font = font),sg.Text(key='-rof-')],[sg.Text('Detection Accuracy: ', font = font),sg.Text(key='-for-')],
+[sg.Text('Status: ', font = font),sg.Text(key='-rof-')],
     [sg.Push(),sg.Image(key='-img-',visible=True),sg.Push()],
               [sg.Push(),sg.Button('enter', font = font, button_color =('green')),sg.Push()],
 [sg.Push(),sg.Button('close',button_color=('red'), font = font),sg.Push()],
@@ -60,7 +58,7 @@ while True:
                     r+=1
                     d = picc(str(values2[0]))# collects profile picture data and converts it to a usable format,png
                     window2['-pbar-'].Update(current_count=r+1)
-                    window2['-for-'].Update(f'{c[1]}%', font =font)
+                   
                     window2['-rof-'].Update(f'            This profile is {c[0]}', font =font)
                     window2['-img-'].Update(size=(300,300),data=d)
 

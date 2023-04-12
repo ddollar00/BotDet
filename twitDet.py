@@ -6,7 +6,7 @@ import warnings
 import numpy
 import re
 import os
-from sklearn import tree
+
 warnings.filterwarnings("ignore")
 
 from sklearn.tree import DecisionTreeClassifier
