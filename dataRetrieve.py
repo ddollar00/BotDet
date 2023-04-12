@@ -98,7 +98,7 @@ def profss(a):
    
    
    
-   url='https://twitter.com/hello'.replace('hello',a)
+   url='https://twitter.com/hello/'.replace('hello',a)
    webbrowser.open(url, new=1, autoraise=True)
   
    

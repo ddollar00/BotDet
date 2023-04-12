@@ -13,9 +13,7 @@ from sklearn.linear_model import LinearRegression
     
 def instaPredict():
         filepath = '/Users/ravendenise/Desktop/BotDet/'
-        y_pred_train = model.predict(X_train)
-        d="%.0f" %(accuracy_score(y_train, y_pred_train)*100)
-	
+        
 
         file= open('TestingIG2_data - TestingIG_data 1 - in.csv', mode='r', encoding='utf-8', errors='ignore')
 
@@ -71,4 +69,3 @@ def instaPredict():
 
         arr=[classes[model.predict(test)[0]],d]
         return(arr)
-instaPredict()

@@ -65,7 +65,10 @@ from selenium import webdriver
 from time import sleep
 import webbrowser
 
-def profileReciever(a):
+#def profileReciever(a):
 
-	url='https://www.instagram.com/hello'.replace('hello',a)
-	webbrowser.open(url, new=1, autoraise=True)
+	#url='https://www.instagram.com/hello'.replace('hello',a)
+	#webbrowser.open(url, new=1, autoraise=True)
+
+
+

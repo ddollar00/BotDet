@@ -2,11 +2,14 @@
 import PySimpleGUI as sg
 import os
 from dataRetrieve import collect,picc,profss
-from instadataRetrieve import instacollection,pic,profileReciever
+from instadataRetrieve import instacollection,pic
+from Screenshot import Screenshot
 from twitDet import twitPredict
 from instaDet import instaPredict
 import io
-
+import cloudscraper
+from PIL import Image
+from tqdm import tqdm
 
 #GUI work
 
@@ -32,8 +35,8 @@ while True:
 
   elif event == 'Twitter':
     
-    layout2 = [[sg.Text('Enter a user ', font = font)],[sg.InputText(font = font)],[sg.ProgressBar(3,orientation='h',expand_x=True,size=(20,20),key='-pbar-')],
-[sg.Text('Status: ', font = font),sg.Text(key='-rof-')],
+    layout2 = [[sg.Text('Enter a user ', font = font)],[sg.InputText(font = font)],[sg.ProgressBar(3,orientation='h',expand_x=True,size=(20,20),bar_color=('green','black'),key='-pbar-')],
+[sg.Text('Status: ', font = font),sg.Text(key='-rof-')],[sg.Text('Detection Accuracy: ', font = font),sg.Text(key='-for-')],
     [sg.Push(),sg.Image(key='-img-',visible=True),sg.Push()],
               [sg.Push(),sg.Button('enter', font = font, button_color =('green')),sg.Push()],
 [sg.Push(),sg.Button('close',button_color=('red'), font = font),sg.Push()],
@@ -58,7 +61,7 @@ while True:
                     r+=1
                     d = picc(str(values2[0]))# collects profile picture data and converts it to a usable format,png
                     window2['-pbar-'].Update(current_count=r+1)
-                   
+                    window2['-for-'].Update(f'{c[1]}%', font =font)
                     window2['-rof-'].Update(f'            This profile is {c[0]}', font =font)
                     window2['-img-'].Update(size=(300,300),data=d)
 
@@ -74,7 +77,7 @@ while True:
              
     window2.close()
   elif event == 'Instagram':
-    layout3 = [[sg.Text('Enter a user ', font = font)],[sg.InputText(font = font)],[sg.ProgressBar(3,orientation='h',expand_x=True,size=(20,20),bar_color=('green'),key='-pbar-')],
+    layout3 = [[sg.Text('Enter a user ', font = font)],[sg.InputText(font = font)],[sg.ProgressBar(3,orientation='h',expand_x=True,size=(20,20),bar_color=('green','black'),key='-pbar-')],
 [sg.Text('Status: ', font = font),sg.Text(key='-rof-')],[sg.Text('Detection Accuracy: ', font = font),sg.Text(key='-for-')],
 [sg.Push(),sg.Image(key='-img-',visible=True),sg.Push()],
 [sg.Push(),sg.Button('enter', font = font, button_color =('green')),sg.Push()],[sg.Push(),sg.Button('close',button_color=('red'), font = font),sg.Push()],[sg.Push(),sg.Button('profile', font = font, button_color =('blue')),sg.Push()],
@@ -103,10 +106,10 @@ while True:
                    window3['-pbar-'].Update(current_count=0) 
               except:
                     window3['-rof-'].Update(f'Account suspended or doesnt exist', font = font)
-              if event3 =='profile':
+         if event3 =='profile':
                   
-                  if len(str(values3[0]))!=0:
-                    profileReciever(str(values3[0]))
+             if len(str(values3[0]))!=0:
+                 Screenshot(str(values3[0]))
     window3.close()
 window.close()
 
