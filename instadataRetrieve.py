@@ -60,3 +60,12 @@ def pic(a):
   pil_image.save(png_bio, format="PNG")
   png_data = png_bio.getvalue()
   return png_data
+
+from selenium import webdriver
+from time import sleep
+import webbrowser
+
+def profileReciever(a):
+
+	url='https://www.instagram.com/hello'.replace('hello',a)
+	webbrowser.open(url, new=1, autoraise=True)

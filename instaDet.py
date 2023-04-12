@@ -13,6 +13,10 @@ from sklearn.linear_model import LinearRegression
     
 def instaPredict():
         filepath = '/Users/ravendenise/Desktop/BotDet/'
+        y_pred_train = model.predict(X_train)
+        d="%.0f" %(accuracy_score(y_train, y_pred_train)*100)
+	
+
         file= open('TestingIG2_data - TestingIG_data 1 - in.csv', mode='r', encoding='utf-8', errors='ignore')
 
         training_data = pd.read_csv(file)
@@ -46,8 +50,13 @@ def instaPredict():
 
         model = DecisionTreeClassifier(criterion="gini", random_state=42,max_depth=20, min_samples_leaf=20)   
         model.fit(X_train,y_train) 
+        y_pred_train = model.predict(X_train)
+
+        d="%.0f" %(accuracy_score(y_train, y_pred_train)*100)
+
         file= open('userig2.csv', mode='r', encoding='utf-8', errors='ignore')
         training_data = pd.read_csv(file)
+
         features = ['Username', 'Number of Posts', 'Followers Count', 'Following Count', 'Bio', 'Verified']
         bag_of_words_bot = r'cash|help|sugar daddy|hacked|follow me|money|essay|forget|paypal|logo|nft|crypto|assignment|locked|sex|play|$|relationship|cash app|mama|give away| prizes|hello|support|gmail.com|you|win|winning|lottery|feet|looking for|' \
                   
@@ -60,4 +69,6 @@ def instaPredict():
         classes=['real','fake']
         test =training_data[features]
 
-        return(classes[model.predict(test)[0]])
+        arr=[classes[model.predict(test)[0]],d]
+        return(arr)
+instaPredict()

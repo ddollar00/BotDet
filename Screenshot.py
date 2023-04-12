@@ -1,3 +1,5 @@
+from selenium import webdriver
+from time import sleep
 import webbrowser
 
 def profileReciever(a):
