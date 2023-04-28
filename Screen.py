@@ -35,37 +35,6 @@ def instacollection(a):
             writer =csv.writer(f, delimiter =',', quoting= csv.QUOTE_MINIMAL)
             writer.writerow(['Username','User ID','Number of Posts','Followers Count','Following Count','Bio','External URL','Verified','Profile Pic','Posts_Dates'])
         #using instaloader class to pull certain key information
-            writer.writerow([profile.username,profile.userid,profile.mediacount,profile.followers,profile.followees,profile.biography,profile.external_url,profile.is_verified,profile.get_profile_pic_url(), p2])
+            print([profile.username,profile.userid,profile.mediacount,profile.followers,profile.followees,profile.biography,profile.external_url,profile.is_verified,profile.get_profile_pic_url(), p2])
 
-import configparser
-import pandas as pd
-import os
-import io
-import cloudscraper
-from PIL import Image
-def pic(a):
-  bot = instaloader.Instaloader()
-  username=a
-  profile = instaloader.Profile.from_username(bot.context, username)
-            
-  jpg_data = (
-    cloudscraper.create_scraper(
-        browser={"browser": "firefox", "platform": "windows", "mobile": False}
-    )
-    .get(profile.get_profile_pic_url())
-    .content
-  )
-  pil_image = Image.open(io.BytesIO(jpg_data))
-  png_bio = io.BytesIO()
-  pil_image.save(png_bio, format="PNG")
-  png_data = png_bio.getvalue()
-  return png_data
-
-from selenium import webdriver
-from time import sleep
-import webbrowser
-
-def profileReciever(a):
-
-	url='https://www.instagram.com/hello'.replace('hello',a)
-	webbrowser.open(url, new=1, autoraise=True)
+instacollection('mk.raven')
