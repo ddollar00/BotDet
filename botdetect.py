@@ -9,7 +9,7 @@ from instaDet import instaPredict
 import io
 import cloudscraper
 from PIL import Image
-from tqdm import tqdm
+
 
 #GUI work
 
